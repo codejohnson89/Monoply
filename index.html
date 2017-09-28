@@ -20,31 +20,50 @@
 
         <div class="row">
             <div class="col-sm-8">
-                <div class="col-sm-6">
-                    <div class="card add-player">
+                <div class="col-sm-4">
+                    <div class="card acitve">
                         <div class="card-background">
                             <h2 class="player-info">Player 1</h2>
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Player One</h3>
-                            <p class="card-text">In last place</p>
+                            <p class="card-text">Current players location: <span id="location"></span></p>
+                            <p class="card-text">Current players cash left: <span id="money"></span></p>
+                            <p class="card-text">Current players property own: <span></span></p>
                         </div>
                         <div class="card-footer">
-                            <small class="text-muted">Here's the footer</small>
+                            <small class="text-muted">
+                                <button id="one" type="button" value="1" onclick="rollDice();">1</button>
+                                <button id="two" type="button" value="2" onclick="rollDice();">2</button>
+                                <button id="one" type="button" value="3" onclick="rollDice();">3</button>
+                                <button id="one" type="button" value="4" onclick="rollDice();">4</button>
+                                <button id="one" type="button" value="5" onclick="rollDice();">5</button>
+                                <button id="one" type="button" value="6" onclick="rollDice();">6</button>
+                                <button id="one" type="button" value="7" onclick="rollDice();">7</button>
+                                <button id="one" type="button" value="8" onclick="rollDice();">8</button>
+                                <button id="one" type="button" value="9" onclick="rollDice();">9</button>
+                                <button id="one" type="button" value="10" onclick="rollDice();">10</button>
+                                <button id="one" type="button" value="11" onclick="rollDice();">11</button>
+                                <button id="one" type="button" value="12" onclick="rollDice();">12</button>
+                            </small>
                         </div>
                     </div>
+
+                </div>
+                <div class="col-sm-6">
 
                 </div>
                 <div class="col-sm-6"></div>
             </div>
             <div class="col-sm-4">
-                <h1>Monoply</h1>
+                <!-- <h1>Monoply</h1> -->
+                <h2></h2>
             </div>
         </div>
 
 
 
-        <button type="button" id="newPlayer">New Player</button>
+
     </main>
 
 

@@ -58,21 +58,73 @@ var moveSpace = [
     wildCards[8]
 ];
 
+var porpertyMA = [true, playerTwo, 60, 2, brown[2]];
 
-var playerOne;
-var playerTwo;
-var playerThree;
-var playerFour;
-var playerFive;
-var playerSix;
-var playerSeven;
-var playerEight;
+var playerOne = ["player One", 2000, 0];
+var playerTwo = ["player Two", 2000, 0];;
+var playerThree = ["player Three", 2000, 0];
+var playerFour = ["player Four", 2000, 0];
+var playerFive = ["player Five", 2000, 0];
+var playerSix = ["player Six", 2000, 0];
+var playerSeven = ["player Seven", 2000, 0];
+var playerEight = ["player Eight", 2000, 0];
 
+//This is for the dice roll. Keeping the zero for now as it make sense to be straight forward for the diceroll function i'll create later.
+var diceRoll = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function spotMove() {
-    for (i = 0; i <= 40; i++) {
-        console.log(moveSpace[i]);
-    };
+function rollDice() {
+    i = $("#one").val();
+
+    console.log(diceRoll[i]);
+    return diceRoll[i]
 }
 
-spotMove();
+function passGo() {
+    if (playerOne[2] > 40) {
+        playerOne[1] = playerOne[1] + 200;
+        console.log(playerOne)
+    }
+}
+
+function taxPay() {
+    if (playerOne[2] == 4 || playerOne[2] == 38) {
+        if (playerOne[2] == 4) {
+            let i = confirm("Do you want to pay the 10% tax?\n Click Ok for Yes or click Cancel for no");
+            if (i == true) {
+                playerOne[1] = Math.round(playerOne[1] - (playerOne[1] * .10));
+                console.log(playerOne);
+            } else {
+                playerOne[1] = playerOne[1] - 200;
+                console.log(playerOne);
+            }
+        } else {
+            playerOne[1] = playerOne[1] - 75;
+            console.log(playerOne);
+        }
+    }
+}
+
+function playerMove() {
+    playerOne[2] = playerOne[2] + diceRoll[i];
+
+
+    if (playerOne[2] <= 40) {
+        if (moveSpace[playerOne[2]] == moveSpace[30]) {
+            playerOne[2] = 40 - playerOne[2];
+            console.log(moveSpace[playerOne[2]]);
+        } else {
+
+            console.log(moveSpace[playerOne[2]]);
+        }
+    } else {
+        passGo();
+        playerOne[2] = playerOne[2] - 40;
+        console.log(moveSpace[playerOne[2]]);
+    }
+
+    taxPay();
+    $("#location").text(moveSpace[playerOne[2]]);
+    $("#money").text([playerOne[1]]);
+}
+
+playerMove();
