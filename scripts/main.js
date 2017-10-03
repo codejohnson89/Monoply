@@ -60,6 +60,7 @@ var moveSpace = [
 
 var porpertyMA = [true, playerTwo, 60, 2, brown[2]];
 
+//players info for money and their current position
 var playerOne = ["player One", 2000, 0];
 var playerTwo = ["player Two", 2000, 0];;
 var playerThree = ["player Three", 2000, 0];
@@ -69,15 +70,22 @@ var playerSix = ["player Six", 2000, 0];
 var playerSeven = ["player Seven", 2000, 0];
 var playerEight = ["player Eight", 2000, 0];
 
+var turnPlayer = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix.playerSeven, playerEight];
+
+
+
 //This is for the dice roll. Keeping the zero for now as it make sense to be straight forward for the diceroll function i'll create later.
 var diceRoll = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+var i;
 
-function rollDice() {
-    i = $("#one").val();
 
+$(".text-muted button").click(function() {
+    i = parseInt($(this).val());
     console.log(diceRoll[i]);
-    return diceRoll[i]
-}
+    playerMove();
+    return i;
+});
+
 
 function passGo() {
     if (playerOne[2] > 40) {
@@ -126,5 +134,3 @@ function playerMove() {
     $("#location").text(moveSpace[playerOne[2]]);
     $("#money").text([playerOne[1]]);
 }
-
-playerMove();
