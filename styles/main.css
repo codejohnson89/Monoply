@@ -13,3 +13,11 @@
     background-color: blue;
     margin: 1px;
 }
+
+.current .card-body {
+    background-color: green;
+}
+
+.next .card-body {
+    background-color: yellow;
+}

@@ -70,67 +70,79 @@ var playerSix = ["player Six", 2000, 0];
 var playerSeven = ["player Seven", 2000, 0];
 var playerEight = ["player Eight", 2000, 0];
 
-var turnPlayer = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix.playerSeven, playerEight];
+var turnPlayer = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix, playerSeven, playerEight];
 
 
 
 //This is for the dice roll. Keeping the zero for now as it make sense to be straight forward for the diceroll function i'll create later.
 var diceRoll = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 var i;
+var x = 0;
 
 
 $(".text-muted button").click(function() {
     i = parseInt($(this).val());
     console.log(diceRoll[i]);
-    playerMove();
+    playerMove(turnPlayer);
     return i;
 });
 
 
 function passGo() {
-    if (playerOne[2] > 40) {
-        playerOne[1] = playerOne[1] + 200;
-        console.log(playerOne)
+    if (turnPlayer[x][2] > 40) {
+        turnPlayer[x][1] = turnPlayer[x][1] + 200;
+        console.log(turnPlayer[x])
     }
 }
 
 function taxPay() {
-    if (playerOne[2] == 4 || playerOne[2] == 38) {
-        if (playerOne[2] == 4) {
+    if (turnPlayer[x][2] == 4 || turnPlayer[x][2] == 38) {
+        if (turnPlayer[x][2] == 4) {
             let i = confirm("Do you want to pay the 10% tax?\n Click Ok for Yes or click Cancel for no");
             if (i == true) {
-                playerOne[1] = Math.round(playerOne[1] - (playerOne[1] * .10));
-                console.log(playerOne);
+                turnPlayer[x][1] = Math.round(turnPlayer[x][1] - (turnPlayer[x][1] * .10));
+                console.log(turnPlayer[x]);
             } else {
-                playerOne[1] = playerOne[1] - 200;
-                console.log(playerOne);
+                turnPlayer[x][1] = turnPlayer[x][1] - 200;
+                console.log(turnPlayer[x]);
             }
         } else {
-            playerOne[1] = playerOne[1] - 75;
-            console.log(playerOne);
+            turnPlayer[x][1] = turnPlayer[x][1] - 75;
+            console.log(turnPlayer[x]);
         }
     }
 }
 
-function playerMove() {
-    playerOne[2] = playerOne[2] + diceRoll[i];
+function playerMove(turnPlayer) {
+
+    turnPlayer[x][2] = turnPlayer[x][2] + diceRoll[i];
 
 
-    if (playerOne[2] <= 40) {
-        if (moveSpace[playerOne[2]] == moveSpace[30]) {
-            playerOne[2] = 40 - playerOne[2];
-            console.log(moveSpace[playerOne[2]]);
+    if (turnPlayer[x][2] <= 40) {
+        if (moveSpace[turnPlayer[x][2]] == moveSpace[30]) {
+            turnPlayer[x][2] = 40 - turnPlayer[x][2];
+            console.log(moveSpace[turnPlayer[x][2]]);
         } else {
 
-            console.log(moveSpace[playerOne[2]]);
+            console.log(moveSpace[turnPlayer[x][2]]);
         }
     } else {
         passGo();
-        playerOne[2] = playerOne[2] - 40;
-        console.log(moveSpace[playerOne[2]]);
+        turnPlayer[x][2] = turnPlayer[x][2] - 40;
+        console.log(moveSpace[turnPlayer[x][2]]);
     }
 
     taxPay();
-    $("#location").text(moveSpace[playerOne[2]]);
-    $("#money").text([playerOne[1]]);
+    $(".current #location").text(moveSpace[turnPlayer[x][2]]);
+    $(".current #money").text([turnPlayer[x][1]]);
+}
+
+function playerGo() {
+    if ($("body #player").hasClass("current")) {
+        $(this).removeClass("current");
+        $(".next").addClass("current");
+        $("next").removeClass();
+    } else {
+        console.log("not working");
+    }
 }
