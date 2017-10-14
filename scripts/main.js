@@ -58,17 +58,19 @@ var moveSpace = [
     wildCards[8]
 ];
 
+var numbers = [1, 2, 3];
+
 var porpertyMA = [true, playerTwo, 60, 2, brown[2]];
 
 //players info for money and their current position
-var playerOne = ["player One", 2000, 0];
-var playerTwo = ["player Two", 2000, 0];;
-var playerThree = ["player Three", 2000, 0];
-var playerFour = ["player Four", 2000, 0];
-var playerFive = ["player Five", 2000, 0];
-var playerSix = ["player Six", 2000, 0];
-var playerSeven = ["player Seven", 2000, 0];
-var playerEight = ["player Eight", 2000, 0];
+var playerOne = ["player One", 2000, 0, $("#playerOne #location"), $("#playerOne #money")];
+var playerTwo = ["player Two", 2000, 0, $("#playerTwo #location"), $("#playerTwo #money")];
+var playerThree = ["player Three", 2000, 0, $("#playerThree #location"), $("#playerThree #money")];
+var playerFour = ["player Four", 2000, 0, $("#playerFour #location"), $("#playerFour #money")];
+var playerFive = ["player Five", 2000, 0, $("#playerFive #location"), $("#playerFive #money")];
+var playerSix = ["player Six", 2000, 0, $("#playerSix #location"), $("#playerSix #money")];
+var playerSeven = ["player Seven", 2000, 0, $("#playerSeven #location"), $("#playerSeven #money")];
+var playerEight = ["player Eight", 2000, 0, $("#playerEight #location"), $("#playerEight #money")];
 
 var turnPlayer = [playerOne, playerTwo, playerThree, playerFour, playerFive, playerSix, playerSeven, playerEight];
 
@@ -87,6 +89,14 @@ $(".text-muted button").click(function() {
     return i;
 });
 
+function nextPlayer() {
+    if (x <= 8) {
+        x++;
+    } else {
+        x = 0
+    }
+    return x;
+}
 
 function passGo() {
     if (turnPlayer[x][2] > 40) {
@@ -133,15 +143,13 @@ function playerMove(turnPlayer) {
     }
 
     taxPay();
-    $(".current #location").text(moveSpace[turnPlayer[x][2]]);
-    $(".current #money").text([turnPlayer[x][1]]);
+    $(turnPlayer[x][3]).text(moveSpace[turnPlayer[x][2]]);
+    $(turnPlayer[x][4]).text([turnPlayer[x][1]]);
 }
 
-function playerGo() {
-    if ($("body #player").hasClass("current")) {
-        $(this).removeClass("current");
-        $(".next").addClass("current");
-        $("next").removeClass();
+function test() {
+    if (turnPlayer[x][2] == numbers) {
+        console.log("works");
     } else {
         console.log("not working");
     }
