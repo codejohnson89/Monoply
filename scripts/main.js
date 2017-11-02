@@ -10,51 +10,88 @@ var blue = ["Park Place", "Boardwalk"];
 var trains = ["Reading Railroad", "Pennsylvania Railroad", "B. & O. Railroad", "Short line Railroad"];
 var utilities = ["Electric Company", "Water Works"];
 
+//Each lower case 'h' represents the number of houses on Property
+function PropertyDetails(name, price, rent, h, hh, hhh, hhhh, hotel) {
+    this.name = name;
+    this.price = price;
+    this.rent = rent
+    this.h = h;
+    this.hh = hh;
+    this.hhh = hhh;
+    this.hotel = hotel;
+}
+
+var mediterraneanAve = new PropertyDetails("Mediterranean Avenue", 60, 2, 10, 30, 90, 160, 250);
+var balticAve = new PropertyDetails("Baltic Avenue", 60, 4, 20, 60, 180, 320, 450);
+var orientalAve = new PropertyDetails("Oriental Avenue", 100, 6, 30, 90, 270, 400, 550);
+var vermontAve = new PropertyDetails("Vermont Avenue", 100, 6, 30, 90, 270, 400, 550);
+var connecticutAve = new PropertyDetails("Connecticut Avenue", 120, 8, 40, 100, 300, 450, 600);
+var stcp = new PropertyDetails("St. Charles Place", 140, 10, 50, 150, 450, 625, 750);
+var statesAve = new PropertyDetails("States Avenue", 140, 10, 50, 150, 450, 625, 750);
+var virginiaAve = new PropertyDetails("Virginia Avenue", 160, 12, 60, 180, 500, 700, 900);
+var stjp = new PropertyDetails("St. James Place", 180, 14, 70, 200, 550, 750, 950);
+var tennesseeAve = new PropertyDetails("Tennessee Avenue", 180, 14, 70, 200, 550, 750, 950);
+var nyAve = new PropertyDetails("New York Avenue", 200, 16, 80, 220, 600, 800, 1000);
+var kentuckyAve = new PropertyDetails("Kentucky Avenue", 220, 18, 90, 250, 700, 875, 1050);
+var indianaAve = new PropertyDetails("Indiana Avenue", 220, 18, 90, 250, 700, 875, 1050);
+var illinoisAve = new PropertyDetails("Illinois Avenue", 240, 20, 100, 300, 750, 925, 1100);
+var alanticAve = new PropertyDetails("Alantic Avenue", 260, 22, 110, 330, 800, 975, 1150);
+var ventorAve = new PropertyDetails("Ventor Avenue", 260, 22, 110, 330, 800, 975, 1150);
+var marving = new PropertyDetails("Marvin Gardens", 280, 24, 120, 360, 850, 1025, 1200);
+var pacificAve = new PropertyDetails("Pacific Avenue", 300, 26, 130, 390, 900, 1100, 1275);
+var ncAve = new PropertyDetails("North Carolina Avenue", 300, 26, 130, 390, 9000, 1100, 1275);
+var pennAve = new PropertyDetails("Pennsylvania Avenue", 320, 28, 150, 450, 1000, 1400);
+var parkplace = new PropertyDetails("Park Place", 350, 35, 175, 500, 1100, 1300, 1500);
+var bw = new PropertyDetails("Boardwalk", 400, 50, 200, 600, 1400, 1700, 2000);
+
+
+
+
 //This is a list of all other spaces on the board that a player can land on
 var wildCards = ["Community Chest", "Income Tax", "Chance", "Just Visiting", "Free Parking", "Go To Jail", "Luxury Tax", "Start", "Go"];
 
 //This will display what space a user should be occupying 
 var moveSpace = [
     wildCards[7],
-    brown[0],
+    mediterraneanAve.name,
     wildCards[0],
-    brown[1],
+    balticAve.name,
     wildCards[1],
     trains[0],
-    lightBlue[0],
+    orientalAve.name,
     wildCards[2],
-    lightBlue[1],
-    lightBlue[2],
+    vermontAve.name,
+    connecticutAve.name,
     wildCards[3],
-    pink[0],
+    stjp.name,
     utilities[0],
-    pink[1],
-    pink[2],
+    statesAve.name,
+    virginiaAve.name,
     trains[1],
-    orange[0],
+    stjp.name,
     wildCards[0],
-    orange[1],
-    orange[2],
+    tennesseeAve.name,
+    nyAve.name,
     wildCards[4],
-    red[0],
+    kentuckyAve.name,
     wildCards[2],
-    red[1],
-    red[2],
+    indianaAve.name,
+    illinoisAve.name,
     trains[2],
-    yellow[0],
-    yellow[1],
+    alanticAve.name,
+    ventorAve.name,
     utilities[1],
-    yellow[2],
+    marving.name,
     wildCards[5],
-    green[0],
-    green[1],
+    pacificAve.name,
+    ncAve.name,
     wildCards[0],
-    green[2],
+    pennAve.name,
     trains[3],
     wildCards[2],
-    blue[0],
+    parkplace.name,
     wildCards[6],
-    blue[1],
+    bw.name,
     wildCards[8]
 ];
 
