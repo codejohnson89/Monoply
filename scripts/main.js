@@ -11,7 +11,7 @@ var trains = ["Reading Railroad", "Pennsylvania Railroad", "B. & O. Railroad", "
 var utilities = ["Electric Company", "Water Works"];
 
 //Each lower case 'h' represents the number of houses on Property
-function PropertyDetails(name, price, rent, h, hh, hhh, hhhh, hotel) {
+function PropertyDetails(name, price, rent, h, hh, hhh, hhhh, hotel, owner) {
     this.name = name;
     this.price = price;
     this.rent = rent
@@ -19,13 +19,14 @@ function PropertyDetails(name, price, rent, h, hh, hhh, hhhh, hotel) {
     this.hh = hh;
     this.hhh = hhh;
     this.hotel = hotel;
+    this.owner = owner;
 }
 
-var mediterraneanAve = new PropertyDetails("Mediterranean Avenue", 60, 2, 10, 30, 90, 160, 250);
-var balticAve = new PropertyDetails("Baltic Avenue", 60, 4, 20, 60, 180, 320, 450);
-var orientalAve = new PropertyDetails("Oriental Avenue", 100, 6, 30, 90, 270, 400, 550);
-var vermontAve = new PropertyDetails("Vermont Avenue", 100, 6, 30, 90, 270, 400, 550);
-var connecticutAve = new PropertyDetails("Connecticut Avenue", 120, 8, 40, 100, 300, 450, 600);
+var mediterraneanAve = new PropertyDetails("Mediterranean Avenue", 60, 2, 10, 30, 90, 160, 250, false);
+var balticAve = new PropertyDetails("Baltic Avenue", 60, 4, 20, 60, 180, 320, 450, false);
+var orientalAve = new PropertyDetails("Oriental Avenue", 100, 6, 30, 90, 270, 400, 550, false);
+var vermontAve = new PropertyDetails("Vermont Avenue", 100, 6, 30, 90, 270, 400, 550, false);
+var connecticutAve = new PropertyDetails("Connecticut Avenue", 120, 8, 40, 100, 300, 450, 600, false);
 var stcp = new PropertyDetails("St. Charles Place", 140, 10, 50, 150, 450, 625, 750);
 var statesAve = new PropertyDetails("States Avenue", 140, 10, 50, 150, 450, 625, 750);
 var virginiaAve = new PropertyDetails("Virginia Avenue", 160, 12, 60, 180, 500, 700, 900);
@@ -44,8 +45,21 @@ var pennAve = new PropertyDetails("Pennsylvania Avenue", 320, 28, 150, 450, 1000
 var parkplace = new PropertyDetails("Park Place", 350, 35, 175, 500, 1100, 1300, 1500);
 var bw = new PropertyDetails("Boardwalk", 400, 50, 200, 600, 1400, 1700, 2000);
 
+ownProp = [
+    mediterraneanAve.owner,
+    balticAve.owner,
+    orientalAve.owner,
+    vermontAve.owner,
+    connecticutAve.owner
+];
 
 
+function buyProp(a) {
+    playerOne[1] = playerOne[1] - a.price;
+    return playerOne[1];
+}
+
+// var propCheck = turnPlayer[x][2];
 
 //This is a list of all other spaces on the board that a player can land on
 var wildCards = ["Community Chest", "Income Tax", "Chance", "Just Visiting", "Free Parking", "Go To Jail", "Luxury Tax", "Start", "Go"];
@@ -123,8 +137,17 @@ $(".text-muted button").click(function() {
     i = parseInt($(this).val());
     console.log(diceRoll[i]);
     playerMove(turnPlayer);
+    $(".card-body").css("background", "green");
     return i;
 });
+
+// function ownerShip() {
+//     if (mediterraneanAve.owner == false) {
+//         console.log("free");
+//     } else {
+//         console.log("owned");
+//     }
+// }
 
 function nextPlayer() {
     if (x <= 8) {
@@ -170,6 +193,7 @@ function playerMove(turnPlayer) {
             turnPlayer[x][2] = 40 - turnPlayer[x][2];
             console.log(moveSpace[turnPlayer[x][2]]);
         } else {
+            buyProp();
 
             console.log(moveSpace[turnPlayer[x][2]]);
         }
